@@ -1,5 +1,4 @@
-import oop
-import numpy
+import oop.oop as oop
 
 tuples = {1, 2, 5}
 list = [1, 2, 5]
