@@ -6,6 +6,7 @@ print("Enter fruit what to store \n"
                 + "O/o for orange \n"
                 + "M/m for melon \n"
                 + "G/g for grapes \n")
+
 def inputFruit(input):
     if input == "a":
         basket.append("apple")
