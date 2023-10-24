@@ -1,0 +1,121 @@
+# Welcoming Message "Grocery store"
+# features:
+# 1.Search for products
+# - name
+# - price
+# - category  [fruit, vegetable, fish, meat, drinks, spices]
+# - brand   [name of supplier, or company]
+# 2. others stores
+# 3. recommendations
+# 4. 0rder
+
+# Message                     Description                                    Usage
+# /help                         - list of commands                             - /help
+# /category @category           - list of category                             - /category seafood
+# /price @product               - show price of given product                  - /price tilapia
+# /info @product                - show information of given product            - /info tilapia
+
+gagawa rin ng place order?
+bat may branch?
+-/remove /add  /stop /total
+
+# class
+# product
+# - name : string
+# - price : number
+# - category : [fruit, vegetable, fish, meat, drinks, spices]
+
+# Fruits
+# Apple, 20
+# Banana, 60
+# Mangoes, 70
+# Orange, 15
+# Pineapple,55
+
+# Vegetables
+# String beans, 10
+# Tomatoes, 88
+# Eggplant, 80
+# Squash, 127
+# Bell pepper, 145
+# Onion, 239
+# Cabbage, 95
+# Carrot, 120
+
+# Meat (Beef, Chicken, Pork)
+# Beef, 350
+# Chicken, 140
+# Pork, 250
+# Fish, 200
+# Shrimp, 600
+# Lobster, 650
+# Classic & Jumbo Hotdog, 170
+# Tocino, 60
+
+
+# Beverage (Water, soda, juices, tea, coffee, energy drinks)
+
+# WATER
+# Nature Spring 110
+# Wilkins distilled water 88
+# Refresh Mineral water 55
+# Evian Natural Mineral Water 117
+
+#SODA
+# Pepsi, 32
+# Sarsi, 32
+
+#JUICES
+# Del Monte Pineapple, 97
+# Del Monte Pineapple Blueberry,88
+# Happy Day, Orange juice, 178
+# Happy Day, Tomato juice, 177
+# Merci Buco, Locally Organic Coconut water, 95
+
+#Tea
+#Gold leaf, Green Tea,  158
+#Green Earth, Organic Morning tea, 454
+
+#Coffee
+#Nescafe(Brand), classic, 170
+#Kopiko, Brown coffee, 125
+#Nescafe, Gold, 650
+#Nestle, Coffee mate, 77
+
+#Energy drinks
+#Gatorade, G-active berry, 29
+#Gatorade, blue bolt, 31
+#Gatorade, Fierce grapes, 109
+#Gatorade, Orange chill, 109
+
+# Condiments (Ketchup, Mustard, Mayonnaise, Spices, Herbs)
+# ladys choice, mayonnaise, 96
+# UFC, Tamis anghang banana catsup, 70
+
+# Knorr, Liquid Seasoning Original, 150
+
+# Datu puti, White vinegar, 44
+# Datu puti, Fish Sauce, 76
+# Silver swan, Soy sauce, 54
+# UFC, Sweet Chili Sauce, 40
+# Ajinomoto, Crispy Fry Spicy, 18
+# Ajinomoto, Crispy Fry Original, 18
+# Megaprime, Curry Powder, 28
+# UFC, Garlic Powder, 32
+
+# Personal Care (Shampoo, Soap, Toothpaste, Deodorants)
+# Pepsodent, Whitening, 119
+# Colgate, Fresh, 159
+# Sunsilk, Strong and Long, 62
+# Safeguard, pure white, 195
+# Dove, Pink beauty, 157
+# Deoplus, Pink Deodorant, 99
+# Axe, Dark temptation, 225
+
+#Chatbot name
+#shopsmart
+#foodiebot
+#QuickPickBot
+#
+
+

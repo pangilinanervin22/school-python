@@ -1,0 +1,11 @@
+from enum import Enum
+
+
+class Type(Enum):
+    CONDIMENTS = "CONDIMENTS"
+    MEAT = "MEAT"
+    FRUIT = "FRUIT"
+    VEGETABLE = "VEGETABLE"
+    SEAFOOD = "SEAFOOD"
+    BEVERAGES = "BEVERAGES"
+    PERSONAL_CARE = "PERSONAL CARE"
