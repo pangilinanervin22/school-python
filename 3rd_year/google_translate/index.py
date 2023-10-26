@@ -1,14 +1,5 @@
 import flet as ft
 import googletrans
-import asyncio
-
-from flet import (
-    Dropdown,
-    TextButton,
-    TextField,
-    Page,
-    Stack
-)
 
 list_of_languages = []
 for key, value in googletrans.LANGUAGES.items():
@@ -17,7 +8,7 @@ for key, value in googletrans.LANGUAGES.items():
 translator = googletrans.Translator()
 
 
-def main(page: Page):
+def main(page: ft.Page):
     page.title = "Flet translator example"
     page.vertical_alignment = "center"
     page.horizontal_alignment = "center"
@@ -27,11 +18,17 @@ def main(page: Page):
 
     # Event handlers
     def text_changed(e):
-        outputTextTranslate.value = f"{inputTextTranslate.value}"
+        output = translator.translate(
+            inputTextTranslate.value, dest=languageDropDown.value)
+        outputTextTranslate.value = f"Output: {output.text}"
+        print(output.text)
         page.update()
 
     def dropdown_changed(e):
-        print(languageDropDown.value)
+        output = translator.translate(
+            inputTextTranslate.value, dest=languageDropDown.value)
+        outputTextTranslate.value = f"Output: {output.text}"
+        print(output.text)
         page.update()
 
     def button_clicked(e):
@@ -45,13 +42,14 @@ def main(page: Page):
         page.update()
 
     # UI components
-    inputTextTranslate = TextField(
+    inputTextTranslate = ft.TextField(
         label='Text to translate:', on_change=text_changed, value="Ako ay isang mabuting tao")
-    outputTextTranslate = ft.Text("")
-    languageDropDown = Dropdown(on_change=dropdown_changed,
-                                options=list_of_languages, value="english")
-    buttonTranslate = TextButton(text='Translate', icon_color='red',
-                                 icon='translate', on_click=button_clicked,)
+    outputTextTranslate = ft.Text(
+        bgcolor="red", color="white", size=20, selectable=True)
+    languageDropDown = ft.Dropdown(on_change=dropdown_changed,
+                                   options=list_of_languages, value="english")
+    buttonTranslate = ft.OutlinedButton(
+        text='Translate', on_click=button_clicked, icon="translate")
 
     page.add(
         ft.Row(controls=(inputTextTranslate, languageDropDown),
