@@ -1,51 +1,84 @@
-from flet import (Text, TextField, ElevatedButton, Row,
-                  Container, colors, ButtonStyle, FloatingActionButton, RoundedRectangleBorder, app)
 import flet as ft
+import googletrans
 import openai
-openai.api_key = "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"
+openai.api_key = ""
+
+
+# Iterate the googletrans list of languages and make array of options
+list_languages = []
+for key, value in googletrans.LANGUAGES.items():
+    list_languages.append(ft.dropdown.Option(value))
+
+# Googletrans Chatbot integration
+
+
+def translate_text(text, language):
+    translator = googletrans.Translator()
+    output = translator.translate(
+        text, dest=language)
+
+    text = f"Output: {output.text}"
+    return output.text
 
 
 def main(page: ft.Page):
     page.scroll = True
     page.theme_mode = "light"
 
+    # Event handler for button click
     def btn_clicked(e):
 
-        # completion = openai.ChatCompletion.create(
-        #     model="gpt-3.5-turbo",
-        #     messages=[
-        #         {"role": "system", "content": "You are useful assistant"},
-        #         {"role": "user", "content": str(text_input)},
-        #     ]
-        # )
-        # output = completion.choices[0].message.content
+        # OpenAI Chatbot integration
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "user", "content": str(text_input.value)},
+            ]
+        )
 
-        clear_button = FloatingActionButton(
-            "Clear", height=60, on_click=clear)
-        page.add(clear_button)
-        page.add(Container(Text(value=text_input.value),
-                 bgcolor=colors.BLUE_GREY_100, padding=10))
-        page.add(Container(
-            Text(value="dssdsds", selectable=True), padding=10))
+        # Get the output of OpenAI chatbot
+        ouput_openai = completion.choices[0].message.content
+        # Translate the output of OpenAI chatbot
+        translate_openai = translate_text(ouput_openai, languageDropDown.value)
+        # Add the input and output to the page
+        page.add(ft.Container(ft.Text(value=text_input.value),
+                 bgcolor=ft.colors.BLUE_GREY_100, padding=10))
+        page.add(ft.Container(
+            ft.Text(value=f"({languageDropDown.value}): {translate_openai}", selectable=True), padding=10))
+
+        # Clear the input field
         text_input.value = ""
         page.update()
 
-    heading = Text(value="ChatGPT Chatbot", size=24)
-    text_input = TextField(
-        hint_text="Enter your prompt", expand=True, multiline=True)
-    submit_button = ElevatedButton("Submit", height=60, style=ButtonStyle(
-        shape=RoundedRectangleBorder(radius=1)), on_click=btn_clicked)
-    row = Row([text_input, submit_button])
-    page.add(heading, row)
-
-    def clear(e):
-        if page.controls == 1:
-            pass
+    # Event handler for clear button
+    def click_clear(e):
+        if len(page.controls) == 4:
+            return
         else:
+            # for clearing the last 2 messages
             page.controls.pop()
-            page.update()
             page.controls.pop()
             page.update()
 
+    # UI components
+    title_heading = ft.Text(
+        value="ChatGPT Chatbot Translating Output", size=24)
+    languageDropDown = ft.Dropdown(width=250,
+                                   options=list_languages, value="filipino")
 
-app(target=main)
+    text_input = ft.TextField(
+        hint_text="Enter your prompt", expand=True, multiline=True)
+
+    submit_button = ft.ElevatedButton(
+        "Submit", height=60,  on_click=btn_clicked)
+
+    input_row = ft.Row([text_input, submit_button])
+
+    clear_button = ft.FloatingActionButton(
+        "Clear", height=60, on_click=click_clear)
+
+    # Add components to page
+    page.add(title_heading, languageDropDown, input_row, clear_button)
+
+
+ft.app(target=main)
