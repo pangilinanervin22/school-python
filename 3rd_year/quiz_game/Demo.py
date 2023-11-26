@@ -4,9 +4,9 @@ import ListQuestion
 class QuizApp(ft.UserControl):
     def list_question(self, questions):
         list = []
-        sample = ["A", "B", "C", "D"]
+
         for question in questions:
-            list.append(ft.Text(f"{sample.pop(0)}. {question}"))
+            list.append(ft.Text(question))
         return list
 
     def build(self):
@@ -23,7 +23,7 @@ class QuizApp(ft.UserControl):
             question_text.value = current["question"]
             choices.controls = self.list_question(current["choices"])
 
-            if input_text.value == current["answer"]:
+            if str.upper(input_text.value) == current["answer"]:
                 print("Correct!")
             else:
                 print("Wrong!")

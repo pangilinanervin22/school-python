@@ -1,11 +1,7 @@
 import flet as ft
 import googletrans
 import openai
-<<<<<<< HEAD
-openai.api_key = ''
-=======
-openai.api_key = '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'
->>>>>>> 119b458f209f349077bdd014123b5a3824f68422
+openai.api_key = "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"
 
 
 # Iterate the googletrans list of languages and make array of options
