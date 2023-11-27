@@ -63,8 +63,8 @@ array_of_questions = [
     },
     {
         "question": "The first programmer in the world is a woman.",
-        "answer": "A",
-        "choices": ["A. True", "B. False"],
+        "answer": "B",
+        "choices": ["A. False", "B. True"],
     },
     {
         "question": "The first original name of Java is OAK.",
@@ -72,8 +72,8 @@ array_of_questions = [
         "choices": ["A. True", "B. False"],
     },
     {
-        "question": "White hat hacker is also called a good hacker.",
-        "answer": "A",
+        "question": "White hat hacker is also called a bad hacker.",
+        "answer": "B",
         "choices": ["A. True", "B. False"],
     },
     {
@@ -83,8 +83,8 @@ array_of_questions = [
     },
     {
         "question": "Device that supplies electric power for a computer.",
-        "answer": "A",
-        "choices": ["A. Power supply", "B. Motherboard", "C. RAM", "D. CPU"],
+        "answer": "C",
+        "choices": ["A. Ram", "B. Motherboard", "C. Power supply", "D. CPU"],
     },
     {
         "question": "The father of the computer.",
@@ -104,7 +104,7 @@ array_of_questions = [
     {
         "question": "Google is an example of ____________.",
         "answer": "A",
-        "choices": ["A. Search engine", "B. Cryptocurrency", "C. Operating system", "D. Internet"],
+        "choices": ["A. Operating system", "B. Cryptocurrency", "C. Search engine", "D. Internet"],
     },
     {
         "question": "TikTok originated in __________.",
@@ -123,7 +123,7 @@ array_of_questions = [
     },
     {
         "question": "What is the heart of the computer?",
-        "answer": "A",
+        "answer": "C",
         "choices": ["A. Power Supply", "B. GPU", "C. CPU", "D. Motherboard"],
     },
     {
@@ -138,31 +138,18 @@ array_of_questions = [
     },
     {
         "question": "What was invented by Linus Torvalds?",
-        "answer": "A",
-        "choices": ["A. Linux", "B. Microsoft", "C. Ubuntu", "D. macOS"],
+        "answer": "B",
+        "choices": ["A. Microsoft", "B. Linux", "C. Ubuntu", "D. macOS"],
     },
     {
         "question": "What kind of language is HTML?",
-        "answer": "A",
-        "choices": ["A. Markup language", "B. Programming language", "C. Scripting language", "D. Structured query language"],
+        "answer": "C",
+        "choices": ["A. Scripting language", "B. Programming language", "C. Markup language", "D. Structured query language"],
     },
 ]
 
+def get_random_question(index = 10):
+    return random.sample(array_of_questions, index)
 
 
-def get_random_question():
-    index_arr = []
-    main_questions = []
 
-    while len(index_arr) != 10:
-        rand = random.randint(0, len(array_of_questions) - 1)
-        if rand in index_arr:
-            continue
-
-        index_arr.append(rand)
-        main_questions.append(array_of_questions[rand])
-
-    return main_questions
-
-
-get_random_question()
